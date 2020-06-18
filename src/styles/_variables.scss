@@ -1,0 +1,72 @@
+@font-face {
+  font-family: "Font Regular";
+  src: url('/assets/fonts/Roboto-Regular.ttf');
+}
+@font-face {
+  font-family: "Font Medium";
+  src: url('/assets/fonts/Roboto-Medium.ttf');
+}
+@font-face {
+  font-family: "Font Bold";
+  src: url('/assets/fonts/Roboto-Bold.ttf');
+}
+$font-primary: 'Font Regular';
+$font-medium: 'Font Medium';
+$font-bold: 'Font Bold';
+
+$color-primary: #404CF0 !default;
+$color-secondary: #4F566B !default;
+$color-tertiary: #EBB763 !default;
+$color-text-primary: #2A2F44 !default;
+$color-text-secondary: #4F566B !default;
+$color-text-tertiary: #A3ACB8 !default;
+$color-bg: #FFFFFF !default;
+$color-white: #FFFFFF !default;
+$color-gray: #A3ACB8 !default;
+$color-gray-light: #BDBDBD !default;
+$color-gray-lighter: #F7FAFC !default;
+$color-black: #2A2F44 !default;
+$color-black-lighter: #4F566B !default;
+$color-red: #FF0074 !default;
+$color-red-lighter: #FF3860 !default;
+$color-green: #209CEE !default;
+$color-blue-lighter: #F7FAFC !default;
+
+$border-radius-base: 4px !default;
+$border-radius-small: 2px !default;
+$border-radius-huge: 6px !default;
+$border-radius-extreme: 30px !default;
+$border-radius-rounded: 290486px !default
+
+$font-size-base: 1rem !default;
+$font-size-medium: 1.25rem !default;
+$font-size-large: 1.5rem !default;
+$font-size-small: .875rem !default;
+
+$font-size-h1: 2.25rem !default;
+$font-size-h2: 1.875rem !default;
+$font-size-h3: 1.5rem !default;
+$font-size-h4: 1.125rem !default;
+$font-size-h5: .875rem !default;
+$font-size-h6: .75rem !default;
+
+$input-padding-left: .75rem;
+
+/* SHADOWS */
+$shadow-key-umbra-opacity: 0.2 !default;
+$shadow-key-penumbra-opacity: 0.14 !default;
+$shadow-ambient-shadow-opacity: 0.12 !default;
+
+/* ANIMATION */
+$animation-curve-fast-out-slow-in: cubic-bezier(0.4, 0, 0.2, 1) !default;
+$animation-curve-linear-out-slow-in: cubic-bezier(0, 0, 0.2, 1) !default;
+$animation-curve-fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1) !default;
+$animation-curve-default: $animation-curve-fast-out-slow-in !default;
+
+$layout-padding-horizontal: 3%;
+$layout-padding-horizontal-mobile: 10px;
+$layout-padding-horizontal-desktop-down: 40px;
+$container-max-width: 1920px;
+
+$container-padding-horizontal: 80px;
+$container-min-height: calc(100vh - 80px);
