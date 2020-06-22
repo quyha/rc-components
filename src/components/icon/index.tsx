@@ -3,11 +3,11 @@ import svgs from './svg';
 import { SvgProps } from './svg.type';
 
 interface Props extends SvgProps {
-    name: string,
-    width?: string,
-    height?: string,
-    className?: string,
-    color?: string,
+    name: string;
+    width?: string;
+    height?: string;
+    className?: string;
+    color?: string;
 }
 
 const Icon: React.FC<Props> = (props: Props) => {
@@ -20,6 +20,7 @@ const Icon: React.FC<Props> = (props: Props) => {
             width="1.5em"
             height="1.5em"
             className={ `icon ${ className ? `${ className }` : '' }` }
+            // eslint-disable-next-line react/jsx-props-no-spreading
             { ...rest }
         />
     )

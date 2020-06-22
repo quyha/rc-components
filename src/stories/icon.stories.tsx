@@ -24,7 +24,7 @@ const styleSpan: React.CSSProperties = {
     marginTop: 5,
 };
 
-export const All = () => (
+export const All: React.FC<{}> = () => (
     <div style={ styleWrapper }>
         {
             iconList.map((icon, index) => (
@@ -37,7 +37,7 @@ export const All = () => (
     </div>
 );
 
-export const Color = () => (
+export const Color: React.FC<{}> = () => (
     <div style={ styleWrapper }>
         <Icon name="alert-circle" color="red" />
         <Icon name="calendar" color="blue" />

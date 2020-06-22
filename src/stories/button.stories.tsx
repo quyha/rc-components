@@ -3,15 +3,15 @@ import Button, { ButtonGroup } from '../components/button';
 import Icon from '../components/icon';
 
 export default {
-  title: 'Button',
-  component: Button,
+    title: 'Button',
+    component: Button,
 };
 
-const doClick = () => {};
+const doClick: () => void = () => {};
 
-export const Basic = () => <Button onClick={ doClick }>Button</Button>;
+export const Basic: React.FC<{}> = () => <Button onClick={ doClick }>Button</Button>;
 
-export const Color = () => (
+export const Color: React.FC<{}> = () => (
     <ButtonGroup>
         <Button appearance="white" onClick={ doClick }>White</Button>
         <Button appearance="light" onClick={ doClick }>Light</Button>
@@ -25,7 +25,7 @@ export const Color = () => (
     </ButtonGroup>
 );
 
-export const Inverted = () => (
+export const Inverted: React.FC<{}> = () => (
     <ButtonGroup>
         <Button appearance="white" inverter onClick={ doClick }>Inverted</Button>
         <Button appearance="light" inverter onClick={ doClick }>Inverted</Button>
@@ -39,7 +39,7 @@ export const Inverted = () => (
     </ButtonGroup>
 );
 
-export const Size = () => (
+export const Size: React.FC<{}> = () => (
     <ButtonGroup>
         <Button size="small" onClick={ doClick }>Small</Button>
         <Button onClick={ doClick }>Default</Button>
@@ -48,7 +48,7 @@ export const Size = () => (
     </ButtonGroup>
 );
 
-export const Outlined = () => (
+export const Outlined: React.FC<{}> = () => (
     <ButtonGroup>
         <Button outlined onClick={ doClick }>Outlined</Button>
         <Button appearance="black" outlined onClick={ doClick }>Outlined</Button>
@@ -60,7 +60,7 @@ export const Outlined = () => (
     </ButtonGroup>
 );
 
-export const Rounded = () => (
+export const Rounded: React.FC<{}> = () => (
     <ButtonGroup>
         <Button rounded onClick={ doClick }>Rounded</Button>
         <Button appearance="black" rounded onClick={ doClick }>Rounded</Button>
@@ -72,7 +72,7 @@ export const Rounded = () => (
     </ButtonGroup>
 );
 
-export const Loading = () => (
+export const Loading: React.FC<{}> = () => (
     <ButtonGroup>
         <Button loading onClick={ doClick }>Loading</Button>
         <Button appearance="black" loading onClick={ doClick }>Loading</Button>
@@ -84,7 +84,7 @@ export const Loading = () => (
     </ButtonGroup>
 );
 
-export const Disabled = () => (
+export const Disabled: React.FC<{}> = () => (
     <ButtonGroup>
         <Button disabled onClick={ doClick }>Disabled</Button>
         <Button appearance="black" disabled onClick={ doClick }>Disabled</Button>
@@ -96,7 +96,7 @@ export const Disabled = () => (
     </ButtonGroup>
 );
 
-export const WithIcons = () => (
+export const WithIcons: React.FC<{}> = () => (
     <ButtonGroup>
         <Button onClick={ doClick }>
             <Icon name="thumb-up" />
@@ -113,7 +113,7 @@ export const WithIcons = () => (
     </ButtonGroup>
 );
 
-export const ListButton = () => (
+export const ListButton: React.FC<{}> = () => (
     <div style={ { width: 393 } }>
         <ButtonGroup>
             <Button onClick={ doClick }>One</Button>
@@ -132,7 +132,7 @@ export const ListButton = () => (
     </div>
 );
 
-export const ListTogether = () => (
+export const ListTogether: React.FC<{}> = () => (
     <>
         <ButtonGroup hasAddons>
             <Button onClick={ doClick }>One</Button>

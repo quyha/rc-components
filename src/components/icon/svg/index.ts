@@ -51,16 +51,25 @@ export const iconList: string[] = [
     'calendar-event',
     'calendar-minus',
     'calendar-plus',
+    'lock',
+    'lock-opened',
+    'mail',
+    'mail-opened',
+    'dots',
+    'dots-vertical',
+    'search',
 ];
 
 const icons: { [key: string]: React.FC<SvgProps> } = iconList.reduce((acc, icon) => {
     try {
+        // eslint-disable-next-line global-require, import/no-dynamic-require
         const tmp = require(`./${ icon }`).default;
         return { ...acc, ...{ [icon]: tmp } };
     } catch (e) {
+        // eslint-disable-next-line no-console
         console.error(`${ icon } not exist!`);
         return false;
     }
-  }, {});
+}, {});
   
 export default icons;

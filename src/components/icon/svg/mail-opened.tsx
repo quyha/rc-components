@@ -6,7 +6,9 @@ export default (props: SvgProps): ReactNode => (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <svg { ...props } xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path stroke="none" d="M0 0h24v24H0z" />
-        <line x1="17" y1="7" x2="7" y2="17" />
-        <polyline points="8 7 17 7 17 16" />
+        <polyline points="3 9 12 15 21 9 12 3 3 9" />
+        <path d="M21 9v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" />
+        <line x1="3" y1="19" x2="9" y2="13" />
+        <line x1="15" y1="13" x2="21" y2="19" />
     </svg>
 );

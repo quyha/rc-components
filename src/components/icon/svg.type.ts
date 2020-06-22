@@ -1,6 +1,6 @@
 export interface SvgProps {
-    width?: string,
-    height?: string,
-    className?: string,
-    color?: string,
+    width?: string;
+    height?: string;
+    className?: string;
+    color?: string;
 }

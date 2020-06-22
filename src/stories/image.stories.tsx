@@ -12,11 +12,11 @@ const stylesSizes: CSSProperties = {
     justifyContent: 'space-between',
 };
 
-export const Basic = () => (
+export const Basic: React.FC<{}> = () => (
     <Image size={ 128 } src="/assets/images/image-default.png" alt="image" />
 );
 
-export const Size = () => (
+export const Size: React.FC<{}> = () => (
     <div style={ stylesSizes }>
         <div>
             <h6>16x16</h6>
@@ -49,11 +49,11 @@ export const Size = () => (
     </div>
 );
 
-export const Rounded = () => (
+export const Rounded: React.FC<{}> = () => (
     <Image size={ 96 } rounded src="/assets/images/image-default.png" alt="image" />
 );
 
-export const BorderRadius = () => (
+export const BorderRadius: React.FC<{}> = () => (
     <div style={ stylesSizes }>
         <Image size={ 96 } borderRadius={ 2 } src="/assets/images/image-default.png" alt="image" />
         <Image size={ 96 } borderRadius={ 3 } src="/assets/images/image-default.png" alt="image" />
@@ -77,7 +77,7 @@ const styleRatio: CSSProperties = {
     marginBottom: 15,
 };
 
-export const Ratio = () => (
+export const Ratio: React.FC<{}> = () => (
     <div style={ styleRatioWrap }>
         <div style={ styleRatio }>
             <h5>1 by 1</h5>

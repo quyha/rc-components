@@ -2,39 +2,40 @@ import React, { ReactNode } from 'react';
 import '../../styles/main.scss';
 
 interface Props {
-    children: ReactNode,
+    children: ReactNode;
     /**
         Buttons have type 'button' | 'submit' | 'reset'
     */
-    type?: 'button' | 'submit' | 'reset',
+    type?: 'button' | 'submit' | 'reset';
     /**
         Buttons that have hrefs should use link instead of button
     */
-    isAnchor?: boolean,
+    isAnchor?: boolean;
     /**
      *  Use this when button is anchor
      */
-    href?: string,
-    titleAnchor?: string,
-    className?: string,
+    href?: string;
+    titleAnchor?: string;
+    className?: string;
     /**
-     *  Appearance is one of 'white' | 'light' | 'black' | 'dark' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
+     *  Appearance is one of 'white' | 'light' | 'black' | 'dark' | 'primary'
+     * | 'info' | 'success' | 'warning' | 'danger'
      */
-    appearance?: 'white' | 'light' | 'black' | 'dark' | 'primary' | 'info' | 'success' | 'warning' | 'danger',
-    inverter?: boolean,
+    appearance?: 'white' | 'light' | 'black' | 'dark' | 'primary' | 'info' | 'success' | 'warning' | 'danger';
+    inverter?: boolean;
     /**
      * Size is one of 'small' | 'medium' | 'large'
      */
-    size?: 'small' | 'medium' | 'large',
-    outlined?: boolean,
-    rounded?: boolean,
-    loading?: boolean,
-    disabled?: boolean,
-    selected?: boolean,
+    size?: 'small' | 'medium' | 'large';
+    outlined?: boolean;
+    rounded?: boolean;
+    loading?: boolean;
+    disabled?: boolean;
+    selected?: boolean;
     /**
      * Click handler (event) => void
      */
-    onClick: (event: React.SyntheticEvent<HTMLElement>) => void,
+    onClick: (event: React.SyntheticEvent<HTMLElement>) => void;
 }
 
 const Button: React.FC<Props> = (props: Props) => {
@@ -53,9 +54,10 @@ const Button: React.FC<Props> = (props: Props) => {
         loading,
         disabled,
         selected,
+        className,
     } = props;
 
-    const className = [
+    const cn = [
         'button',
         appearance && `is-${ appearance }`,
         inverter && 'is-inverter',
@@ -65,6 +67,7 @@ const Button: React.FC<Props> = (props: Props) => {
         loading && 'is-loading',
         disabled && 'is-disabled',
         selected && 'is-selected',
+        className && className,
     ].filter(Boolean).join(' ');
     
     return isAnchor ? (
@@ -76,11 +79,12 @@ const Button: React.FC<Props> = (props: Props) => {
             { children }
         </a>
     ) : (
+        // eslint-disable-next-line react/button-has-type
         <button
             type={ type }
-            className={ className }
+            className={ cn }
             onClick={ onClick }
-            disabled={ disabled ? disabled : false }
+            disabled={ disabled }
         >
             { children }
         </button>
@@ -95,10 +99,10 @@ Button.defaultProps = {
 export default Button;
 
 interface ButtonGroup {
-    children: ReactNode,
-    className?: string,
-    hasAddons?: boolean,
-    align?: 'left' | 'centered' | 'right',
+    children: ReactNode;
+    className?: string;
+    hasAddons?: boolean;
+    align?: 'left' | 'centered' | 'right';
 }
 
 export const ButtonGroup: React.FC<ButtonGroup> = (props: ButtonGroup) => {

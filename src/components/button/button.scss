@@ -236,19 +236,7 @@ $colors: mergeColorMaps((
     opacity: .5;
 
     &::after {
-      position: absolute !important;
-      border: 2px solid $color-gray;
-      border-radius: 50%;
-      border-right-color: transparent;
-      border-top-color: transparent;
-      content: "";
-      display: block;
-      height: 1em;
-      width: 1em;
-      @include animation(spinAround 500ms infinite linear);
-      left: calc(50% - (1em / 2));
-      top: calc(50% - (1em / 2));
-      @include box-sizing(border-box);
+      @extend %loading;
     }
   }
 
@@ -345,9 +333,4 @@ $colors: mergeColorMaps((
           }
       }
   }
-}
-
-@include keyframes(spinAround) {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(359deg); }
 }
