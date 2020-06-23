@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import InputFile from '../components/input/file';
 
 export default {
@@ -6,11 +6,11 @@ export default {
     component: InputFile,
 };
 
-const styleWrap = {
+const styleWrap: CSSProperties = {
     width: 450,
 };
 
-const styleBox = {
+const styleBox: CSSProperties = {
     ...styleWrap,
     border: '1px solid #BDBDBD',
     padding: 30,
