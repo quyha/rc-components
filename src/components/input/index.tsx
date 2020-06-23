@@ -5,7 +5,7 @@ export interface InputProps {
     className?: string;
     value?: string;
     /**
-     * function (value: string) => void
+     * Change event handler (value: string) => void
      */
     onChange?: (value: string) => void;
     placeholder?: string;

@@ -54,7 +54,7 @@ const Image: React.FC<Props> = (props: Props) => {
     return (
         <figure className={ cnFg }>
             <img
-                src={ src === '' ? src : srcDefault }
+                src={ src !== '' ? src : srcDefault }
                 alt={ alt }
                 className={ cn }
             />

@@ -58,6 +58,7 @@ export const iconList: string[] = [
     'dots',
     'dots-vertical',
     'search',
+    'file-upload',
 ];
 
 const icons: { [key: string]: React.FC<SvgProps> } = iconList.reduce((acc, icon) => {
