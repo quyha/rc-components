@@ -1,0 +1,101 @@
+$switch-font-size-base: 1rem;
+$switch-font-size-lg: ($switch-font-size-base * 1.25);
+$switch-font-size-sm: ($switch-font-size-base * .875);
+
+$switch-height: 1.5em;
+$switch-border-radius: $switch-height;
+$switch-background-color: #A3ACB8;
+$switch-checked-background-color: $color-primary;
+
+
+$switch-thumb-background-color: $color-white;
+$switch-thumb-padding: 2px;
+$switch-thumb-border-radius: 50%;
+$switch-transition: .25s all;
+
+
+.switch {
+    position: relative;
+    font-size: $switch-font-size-base;
+
+    $switch: &;
+
+    &-input {
+        position: absolute;
+        height: 0;
+        width: 0;
+        border: 0;
+        overflow: hidden;
+        padding: 0;
+        background: none;
+
+        &:disabled {
+            cursor: not-allowed;
+
+            + #{$switch}-label::before {
+                opacity: .4;
+            }
+        }
+
+        &:checked {
+            + #{$switch}-label {
+                &::before {
+                    background-color: $switch-checked-background-color;
+                }
+
+                &::after {
+                    margin-left: $switch-height;
+                }
+            }
+        }
+    }
+
+    &-label {
+        position: relative;
+        min-width: $switch-height * 2;
+        border-radius: $switch-height;
+        height: $switch-height;
+        line-height: $switch-height;
+        display: inline-block;
+        cursor: pointer;
+        outline: none;
+        user-select: none;
+        vertical-align: middle;
+        text-indent: calc(#{$switch-height} * 2 + .5rem);
+
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: $switch-height * 2;
+            bottom: 0;
+            display: block;
+        }
+
+        &::before {
+            right: 0;
+            background-color: $switch-background-color;
+            border-radius: $switch-border-radius;
+            @include transition($switch-transition);
+        }
+
+        &::after {
+            top: $switch-thumb-padding;
+            left: $switch-thumb-padding;
+            width: calc(#{$switch-height} - #{$switch-thumb-padding} * 2);
+            height: calc(#{$switch-height} - #{$switch-thumb-padding} * 2);
+            border-radius: $switch-thumb-border-radius;
+            background-color: $switch-thumb-background-color;
+            @include transition($switch-transition);
+        }
+    }
+
+    &.is-small {
+        font-size: $switch-font-size-sm;
+    }
+
+    &.is-large {
+        font-size: $switch-font-size-lg;
+    }
+}
