@@ -35,7 +35,7 @@ interface Props {
     /**
      * Click handler (event) => void
      */
-    onClick: (event: React.SyntheticEvent<HTMLElement>) => void;
+    onClick?: (event: React.SyntheticEvent<HTMLElement>) => void;
 }
 
 const Button: React.FC<Props> = (props: Props) => {
@@ -69,6 +69,12 @@ const Button: React.FC<Props> = (props: Props) => {
         selected && 'is-selected',
         className && className,
     ].filter(Boolean).join(' ');
+
+    const doClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
+        if (onClick) {
+            onClick(e);
+        }
+    }
     
     return isAnchor ? (
         <a
@@ -83,7 +89,7 @@ const Button: React.FC<Props> = (props: Props) => {
         <button
             type={ type }
             className={ cn }
-            onClick={ onClick }
+            onClick={ doClick }
             disabled={ disabled }
         >
             { children }

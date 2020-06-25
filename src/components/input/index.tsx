@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 
 export interface InputProps {
     type: string;
@@ -27,7 +27,7 @@ export interface InputProps {
     horizontal?: boolean;
 }
 
-export const Field: React.FC<Partial<InputProps>> = (props) => {
+export const FieldWrap: React.FC<Partial<InputProps>> = (props) => {
     const {
         loading,
         iconLeft,
@@ -46,7 +46,7 @@ export const Field: React.FC<Partial<InputProps>> = (props) => {
         iconRight && 'has-icon-right',
     ].filter(Boolean).join(' ');
 
-    const render = React.useMemo(() => (
+    const render = useMemo(() => (
         <div className="field">
             { label && <label className="label">{ label }</label> }
             <div className={ cnControl }>
@@ -56,9 +56,9 @@ export const Field: React.FC<Partial<InputProps>> = (props) => {
             </div>
             { error && <p className="help is-danger">{ error }</p> }
         </div>
-    ), [ value, error, cnControl ]);
+    ), [ value, error, cnControl, children ]);
 
-    const renderHorizontal = React.useMemo(() => (
+    const renderHorizontal = useMemo(() => (
         <div className="field is-horizontal">
             <div className="field-label">
                 { label && <label className="label">{ label }</label> }
@@ -74,7 +74,7 @@ export const Field: React.FC<Partial<InputProps>> = (props) => {
                 </div>
             </div>
         </div>
-    ), [ value, error, cnControl ]);
+    ), [ value, error, cnControl, children ]);
     
     return horizontal ? renderHorizontal : render;
 };
@@ -112,7 +112,7 @@ const Input: React.FC<InputProps> = (props: InputProps) => {
     
     return (
         // eslint-disable-next-line react/jsx-props-no-spreading
-        <Field { ...props }>
+        <FieldWrap { ...props }>
             {
                 type !== 'textarea' ? (
                     <input
@@ -135,7 +135,7 @@ const Input: React.FC<InputProps> = (props: InputProps) => {
                     />
                 )
             }
-        </Field>
+        </FieldWrap>
     )
 }
 

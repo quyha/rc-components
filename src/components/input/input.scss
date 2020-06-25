@@ -85,7 +85,6 @@ $appearances: (
 
     .control {
         position: relative;
-        text-align: center;
 
         &.is-loading {
             &::after {
@@ -106,6 +105,7 @@ $appearances: (
                 top: 0;
                 width: $input-height;
                 z-index: 4;
+                text-align: center;
 
                 .icon {
                     width: 1.5em;
