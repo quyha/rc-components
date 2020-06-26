@@ -1,0 +1,63 @@
+$pagination-width: 30px !default;
+$pagination-color: $color-text-primary !default;
+$pagination-border-color: hsl(0, 0%, 86%) !default;
+$pagination-background-color: $color-white;
+
+$pagination-hover-border-color: hsl(0, 0%, 48%) !default;
+
+$pagination-active-color: $color-primary;
+$pagination-active-border-color: $color-primary;
+
+.pagination {
+    @include flexbox();
+    margin: 1rem 0;
+
+    &.is-left {
+        @include justify-content(flex-start);
+    }
+
+    &.is-center {
+        @include justify-content(center);
+    }
+
+    &.is-right {
+        @include justify-content(flex-end);
+    }
+  
+    .page-item {
+      width: $pagination-width;
+      height: $pagination-width;
+      background-color: $pagination-background-color;
+      border: 1px solid $pagination-border-color;
+      border-radius: 3px;
+      @include flexbox();
+      @include justify-content(center);
+      @include align-items(center);
+      margin: .2rem;
+
+      &:hover, &:focus {
+          border-color: $pagination-hover-border-color;
+      }
+  
+      a {
+        cursor: pointer;
+        color: $pagination-color;
+      }
+  
+      &.is-disabled {
+        cursor: not-allowed;
+        opacity: .4;
+        pointer-events: none;
+      }
+  
+      &.is-active {
+        cursor: not-allowed;
+        border-color: $pagination-active-border-color;
+        
+        a {
+          color: $pagination-active-color;
+        }
+      }
+    }
+  }
+  
