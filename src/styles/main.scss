@@ -4,6 +4,7 @@
 @import '_mixins';
 // @import '_grid';
 @import '_inheritance';
+@import '_elements';
 @import '../components/button/button.scss';
 @import '../components/icon/icons.scss';
 @import '../components//image//image.scss';
@@ -12,6 +13,8 @@
 @import '../components/checkbox/checkbox.scss';
 @import '../components/radio/radio.scss';
 @import '../components/switch/switch.scss';
+@import '../components/modal/modal.scss';
+@import '../components/delete/delete.scss';
 // @import '_elements';
 @import '_core';
 // @import "../../app/elements/**/*.scss";

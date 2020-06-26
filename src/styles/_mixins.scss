@@ -17,6 +17,10 @@ $breakpoint-mobile-landscape: 480px;
   @if $media == desktop-down {
     @media only screen and (max-width: calc(#{$breakpoint-desktop-up} - 1px)) { @content; }
   }
+
+  @if $media == tablet-up {
+      @media screen and (min-width: calc(#{$breakpoint-small-tablet} + 1px)) { @content; }
+  }
   
   @if $media == tablet-down {
     @media only screen and (max-width: $breakpoint-small-tablet) { @content; }
