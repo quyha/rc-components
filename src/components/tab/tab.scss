@@ -1,0 +1,60 @@
+.tabs {
+    @include flexbox();
+    @include align-items(stretch);
+    @include justify-content(space-between);
+    font-size: 1rem;
+    overflow: hidden;
+    overflow-x: auto;
+  
+    ul {
+        position: relative;
+        @include flexbox();
+        @include align-items(center);
+        @include justify-content(flex-start);
+        @include flex-grow(1);
+        @include flex-shrink(0);
+  
+        .tab {
+            display: block;
+            position: relative;
+  
+            &:not(:first-child) {
+                margin-left: 30px;
+            }
+    
+            &-active-maker {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                height: 2px;
+                background-color: $color-primary;
+                @include transition(all .5s);
+                max-width: 200px;
+            }
+    
+            &.is-active ~ .tab-active-maker {
+                left: 0;
+            }
+        }
+    }
+  
+    .tab-title {
+        @include flexbox();
+        @include align-items(center);
+        @include justify-content(center);
+        padding: .8em 0;
+        vertical-align: top;
+        color: $color-text-secondary;
+        font-weight: 600;
+        cursor: pointer;
+    }
+}
+  
+.tab-content {
+    padding: 1.5em 0;
+  
+    @include breakpoint(tablet) {
+        padding: 15px 0;
+    }
+}
+  
