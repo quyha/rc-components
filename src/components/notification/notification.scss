@@ -1,0 +1,46 @@
+$notification-background-color: hsl(0, 0%, 96%) !default;
+$notification-border-radius: $border-radius-base !default;
+$notification-padding: 1.25rem 2.5rem 1.25rem 1.5rem !default;
+
+.notification {
+    position: relative;
+    background-color: $notification-background-color;
+    border-radius: $notification-border-radius;
+    padding: $notification-padding;
+    line-height: 1.5;
+
+    &:not(:last-child) {
+        margin-bottom: 1.5rem;
+    }
+
+    a:not(.button):not(.dropdown-item) {
+        color: currentColor;
+        text-decoration: underline;
+    }
+
+    & > .delete {
+        position: absolute;
+        top: .5rem;
+        right: .5rem;
+    }
+
+    @each $name, $pair in $colors {
+        $color: nth($pair, 1);
+        $color-invert: nth($pair, 2);
+
+        &.is-#{$name} {
+            background-color: $color;
+            color: $color-invert;
+
+            @if length($pair) >= 4 {
+                $color-light: nth($pair, 3);
+                $color-dark: nth($pair, 4);
+
+                &.is-light {
+                    color: $color-dark;
+                    background-color: $color-light;
+                }
+            }
+        }
+    }
+}
