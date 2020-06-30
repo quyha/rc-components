@@ -44,7 +44,7 @@ $danger-dark     : findDarkColor($danger) !default;
 $light-invert    : findColorInvert($light) !default;
 $dark-invert     : findColorInvert($dark) !default;
 
-$button-color: #363636 !default;
+$button-color: $color-text-primary !default;
 $button-background-color: $color-white !default;
 
 $button-border-color: #dbdbdb !default;
@@ -53,15 +53,15 @@ $button-border-width: 1px !default;
 $button-padding-vertical: calc(0.5em - #{$button-border-width}) !default;
 $button-padding-horizontal: 1em !default;
 
-$button-hover-color: #363636 !default;
+$button-hover-color: $color-text-primary !default;
 $button-hover-border-color: #b5b5b5 !default;
 
-$button-focus-color: #363636 !default;
+$button-focus-color: $color-text-primary !default;
 $button-focus-border-color: $color-primary !default;
 $button-focus-box-shadow-size: 0 0 0 0.125em !default;
 $button-focus-box-shadow-color: rgba(50,115,220,.25) !default;
 
-$button-active-color: #363636 !default;
+$button-active-color: $color-text-primary !default;
 $button-active-border-color: #4a4a4a !default;
 
 //$button-text-color: $text !default;
