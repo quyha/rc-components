@@ -1,0 +1,93 @@
+$table-color: $color-text-primary !default;
+$table-background-color: $color-white !default;
+$table-color-muted: #A3ACB8 !default;
+$table-thead-background-color: #F7FAFC !default;
+$table-thead-border-color: #F7FAFC !default;
+$table-td-border-color: #F7FAFC !default;
+$table-empty-color: #A3ACB8 !default;
+
+$table-row-hover-background-color: #FAFAFA !default;
+$table-row-selected-background-color: #F7FAFC !default;
+
+$table-cell-padding: 1em 1.25em !default;
+
+.table-wrap {
+    position: relative;
+}
+
+.table {
+    color: $table-color;
+    background-color: $table-background-color;
+    border-collapse: collapse;
+    overflow-x: auto;
+    width: 100%;
+    position: relative;
+    
+    @include breakpoint(desktop-down) {
+        display: block;
+        white-space: nowrap;
+        max-width: 94vw;
+    }
+
+    &.is-loading {
+        opacity: .4;
+    }
+
+    &-loading {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+
+        .loader-spinner {
+            top: 50%;
+            left: 50%;
+            @include transform(translateX(-50%) translateY(-50%));
+        }
+    }
+    
+    &.is-muted {
+        thead tr {
+            color: $table-color-muted;
+        }
+    }
+    
+    thead {
+        border-top: 1px solid $table-thead-border-color;
+        background-color: $table-thead-background-color;
+    }
+    
+    td {
+        padding: $table-cell-padding;
+        border-bottom: 1px solid $table-td-border-color;
+    }
+    
+    th {
+        font-weight: 600;
+        padding: $table-cell-padding;
+        text-align: left;
+        @extend td;
+    }
+    
+    .empty-data {
+        text-align: center;
+        color: $table-empty-color;
+    }
+
+    &-checkbox {
+        position: relative;
+        top: -3px;
+    }
+
+    &-row {
+        &:hover {
+            background-color: $table-row-hover-background-color;
+        }
+
+        &.is-selected {
+            background-color: $table-row-selected-background-color;
+        }
+    }
+}
+  

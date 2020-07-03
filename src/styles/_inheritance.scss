@@ -53,15 +53,6 @@ $control-padding-horizontal: calc(0.875em - #{$control-border-width}) !default;
     @include box-sizing(border-box);
 }
 
-@include keyframes(spinAround) {
-    from {
-        @include transform(rotate(0deg));
-    }
-    to {
-        @include transform(rotate(359deg));
-    }
-}
-
 %delete {
     user-select: none;
     appearance: none;

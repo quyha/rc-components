@@ -11,7 +11,7 @@ export const Basic: React.FC<{}> = () => {
 
     const changePage = (p: number): void => setPage(p);
 
-    return <Pagination total={ 200 } activePage={ page } onChange={ changePage } />
+    return <Pagination total={ 200 } pageSize={ 3 } activePage={ page } onChange={ changePage } />
 };
 
 export const Alignment: React.FC<{}> = () => {
@@ -45,5 +45,20 @@ export const Alignment: React.FC<{}> = () => {
                 />
             </div>
         </>
+    )
+};
+
+export const Loading: React.FC<{}> = () => {
+    const [ page, setPage ] = useState<number>(1);
+
+    const changePage = (p: number): void => setPage(p);
+
+    return (
+        <Pagination
+            total={ 40 }
+            activePage={ page }
+            onChange={ changePage }
+            loading
+        />
     )
 };

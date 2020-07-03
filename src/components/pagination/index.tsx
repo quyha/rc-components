@@ -11,7 +11,7 @@ interface Props {
      */
     activePage: number;
     /**
-     * Range of pages in paginator
+     * Items of page
      */
     pageSize?: number;
     /**
@@ -22,6 +22,7 @@ interface Props {
      * Alignment pagination. One of 'left' | 'center' | 'right'
      */
     align?: 'left' | 'center' | 'right';
+    loading?: boolean;
 }
 
 interface Pager {
@@ -83,6 +84,7 @@ const Pagination: React.FC<Props> = (props: Props) => {
         pageSize = 10,
         onChange,
         align,
+        loading,
     } = props;
 
     const [ pager, setPager ] = useState<Pager>();
@@ -110,6 +112,12 @@ const Pagination: React.FC<Props> = (props: Props) => {
     const prevTotal = usePrevious(total);
     const prevActivePage = usePrevious(activePage);
 
+    const cn = [
+        'pagination',
+        align && `is-${ align }`,
+        loading && 'is-loading',
+    ].filter(Boolean).join(' ');
+
     useEffect(() => {
         setPage(activePage);
     }, []);
@@ -122,7 +130,7 @@ const Pagination: React.FC<Props> = (props: Props) => {
     }, [ total, activePage ]);
     
     return (!pager || !pager.pages || pager.pages.length < 1 || pager.endPage === 1) ? null : (
-        <ul className={ `pagination${ align ? ` is-${ align }` : '' }` }>
+        <ul className={ cn }>
             <li className={ `page-item ${ pager.currentPage === 1 ? 'is-disabled' : '' }` }>
                 <a className="page-link" onClick={ changePage(1) } title="First">&laquo;</a>
             </li>

@@ -1,0 +1,67 @@
+$spinner-color: #A3ACB8 !default;
+
+.loader-spinner {
+    position: relative;
+    display: block;
+    height: 1em;
+    width: 1em;
+    @include animation(spinAround .7s infinite linear);
+    color: $spinner-color;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    border-right-color: transparent;
+    border-top-color: transparent;
+
+    &.is-primary {
+        color: $color-primary;
+    }
+}
+
+@include keyframes(spinAround) {
+    from {
+        @include transform(rotate(0deg));
+    }
+    to {
+        @include transform(rotate(359deg));
+    }
+}
+
+.loader-dots {
+    color: $spinner-color;
+
+    &.is-primary {
+        color: $color-primary;
+    }
+    
+    > .loader-dot-bubble {
+        width: .4em;
+        height: .4em;
+        background-color: currentColor;
+        border-radius: 50%;
+        display: inline-block;
+        @include animation(dot-bubble .5s ease infinite alternate);
+
+        &:not(:last-child) {
+            margin-right: .2em;
+        }
+    }
+
+    > .loader-dot-bubble:nth-child(2) {
+        @include animation-delay(.2s);
+    }
+
+    > .loader-dot-bubble:nth-child(3) {
+        @include animation-delay(.4s);
+    }
+}
+
+@include keyframes(dot-bubble) {
+    from {
+        opacity: 1;
+        @include transform(scale(1.2));
+    }
+    to {
+        opacity: .6;
+        @include transform(scale(.8));
+    }
+}

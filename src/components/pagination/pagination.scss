@@ -23,6 +23,11 @@ $pagination-active-border-color: $color-primary;
     &.is-right {
         @include justify-content(flex-end);
     }
+
+    &.is-loading {
+        opacity: .4;
+        pointer-events: none;
+    }
   
     .page-item {
       width: $pagination-width;

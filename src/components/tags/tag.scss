@@ -1,0 +1,75 @@
+$tag-background-color: #F5F5F5 !default;
+$tag-color: $color-text-primary !default;
+$tag-radius: $border-radius-base !default;
+$tag-size-small: .75em !default;
+$tag-size-medium: 1.25em !default;
+$tag-size-large: 1.5em !default;
+
+.tag:not(body) {
+    display: inline-flex;
+    font-size: 1rem;
+    color: $tag-color;
+    background-color: $tag-background-color;
+    border-radius: $tag-radius;
+    height: 2em;
+    padding-left: .75em;
+    padding-right: .75em;
+    white-space: nowrap;
+    line-height: 1.5;
+    @include justify-content(center);
+    @include align-items(center);
+
+    @each $name, $pair in $colors {
+        $color: nth($pair, 1);
+        $color-invert: nth($pair, 2);
+
+        &.is-#{$name} {
+            background-color: $color;
+            color: $color-invert;
+
+            @if length($pair) >= 4 {
+                $color-light: nth($pair, 3);
+                $color-dark: nth($pair, 4);
+
+                &.is-light {
+                    color: $color-dark;
+                    background-color: $color-light;
+                }
+            }
+        }
+    }
+
+    &.is-small {
+        font-size: $tag-size-small;
+    }
+
+    &.is-medium {
+        font-size: $tag-size-medium;
+    }
+
+    &.is-large {
+        font-size: $tag-size-large;
+    }
+
+    &.is-controlled {
+        cursor: pointer;
+    }
+
+    .delete {
+        margin-left: 10px;
+    }
+}
+
+.tags {
+    @include flexbox();
+    @include align-items(center);
+    @include flex-wrap(wrap);
+
+    .tag {
+        margin-bottom: .5rem;
+
+        &:not(:last-child) {
+            margin-right: .5rem;
+        }
+    }
+}

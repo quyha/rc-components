@@ -43,7 +43,7 @@ $checkbox-width: 1.25em !default;
         opacity: 0;
         cursor: pointer;
 
-        &:hover:not(:checked) {
+        &:hover:not(:checked):not(:disabled) {
             + #{$checkbox}-inner {
                 border-color: $input-hover-border-color;
             }
@@ -64,8 +64,8 @@ $checkbox-width: 1.25em !default;
             cursor: not-allowed;
 
             &:not(:checked) + #{$checkbox}-inner {
-                border-color: $input-disabled-border-color;
                 background-color: $input-disabled-background-color;
+                opacity: .8;
             }
 
             &:checked {
