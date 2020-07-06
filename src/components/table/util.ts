@@ -1,6 +1,6 @@
-import { Data, StateSelectedKeys } from './type';
+import { Record, StateSelectedKeys } from './type';
 
-function isSelectedAllRow(data: Data[], selectedData: StateSelectedKeys): boolean {
+function isSelectedAllRow(data: Record[], selectedData: StateSelectedKeys): boolean {
     const { length: dataLength } = data;
     const { length: selectedLength } = selectedData;
     
@@ -22,7 +22,7 @@ function isSelectedAllRow(data: Data[], selectedData: StateSelectedKeys): boolea
 
 function toSelectedAllKeys(
     selected: boolean,
-    data: Data[],
+    data: Record[],
     selectedKeys: StateSelectedKeys,
     disabledKeys: StateSelectedKeys
 ): StateSelectedKeys {
