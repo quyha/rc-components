@@ -1,0 +1,259 @@
+$sidebar-width: 300px !default;
+$sidebar-mini-width: 60px !default;
+$sidebar-bg: #222d32 !default;
+$sidebar-active-bg: #1e282c !default;
+$sidebar-color: #b8c7ce !default;
+
+$header-height: 80px !default;
+
+$line-background-color: #FFFFFF !default;
+
+.menu-toggle {
+    display: block;
+    position: relative;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+
+    > input {
+        display: block;
+        opacity: 0;
+        -webkit-touch-callout: none;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .line {
+        display: block;
+        width: 33px;
+        height: 4px;
+        margin-bottom: 5px;
+        position: relative;
+        background-color: $line-background-color;
+        border-radius: 3px;
+        z-index: 1;
+
+        @include transform-origin(4px 0px);
+
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+            background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease,
+            -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+        -webkit-transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+            background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease,
+            -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+        -moz-transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+            background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease,
+            -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+
+        &:first-child {
+            @include transform-origin(0% 0%);
+        }
+
+        &:nth-last-child(2) {
+            @include transform-origin(0% 100%);
+        }
+    }
+}
+
+.sidebar {
+    height: 100%;
+    padding: 1rem 0;
+    min-width: $sidebar-width;
+    background-color: $sidebar-bg;
+    @include transition(min-width .3s ease-in-out);
+
+    &.is-mini {
+        @include breakpoint(desktop-up) {
+            min-width: $sidebar-mini-width;
+            width: $sidebar-mini-width;
+            @include transition(min-width .3s ease-in-out);
+
+            .menu {
+                @include hover-link {
+                    span {
+                        display: block !important;
+                    }
+                    
+                    .submenu {
+                        display: block;
+                    }
+                }
+                
+                &:not(.has-submenu), .submenu-label {
+                    svg {
+                        margin-right: 0;
+                    }
+                    
+                    span {
+                        display: none;
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: $sidebar-mini-width;
+                        background-color: $sidebar-bg;
+                        padding: 1rem;
+                        min-width: 200px;
+                        border-radius: 0 3px 3px 0;
+                        line-height: 1;
+                    }
+                }
+
+                .submenu {
+                    display: none;
+                    position: absolute;
+                    top: 0;
+                    left: $sidebar-mini-width;
+                    background-color: $sidebar-bg;
+                    min-width: 200px;
+                    border-radius: 0 3px 3px 0;
+                }
+
+                &-chevron {
+                    display: none;
+                }
+            }
+
+            ul:not(.submenu) a > svg, .submenu-label > svg {
+                margin-left: .35rem;
+                @include transition(margin-left .3s ease-in-out);
+            }
+        }
+    }
+
+    .menu {
+        position: relative;
+        
+        a, label {
+            position: relative;
+            color: $sidebar-color;
+            padding: 1rem;
+            @include flexbox();
+            @include align-items(center);
+
+            @include hover-link {
+                color: $color-white;      
+                background-color: $sidebar-active-bg;
+
+                svg path {
+                    fill: $color-white;
+                }
+            }
+
+            svg {
+                margin-right: 1rem;
+                @include transition(margin-left .3s ease-in-out);
+
+                path {
+                    fill: $sidebar-color;
+                }
+            }
+        }
+
+        &-chevron {
+            position: absolute;
+            right: 0;
+            @include transition(transform .3s ease-in-out);
+        }
+
+        &.has-submenu {
+            cursor: pointer;
+
+            &.is-active .submenu-label {
+                color: $color-white;
+                background-color: $sidebar-active-bg;
+
+                svg path {
+                    fill: $color-white;
+                }
+            }
+        }
+
+        &.is-active:not(.has-submenu) {
+            a {
+                color: $color-white;
+                background-color: $sidebar-active-bg;
+            }
+
+            svg path {
+                fill: $color-white;
+            }
+        }
+
+        .submenu {
+            max-height: 0;
+            overflow: hidden;
+            @include transition(max-height .5s cubic-bezier(0, 1, 0, 1));
+            
+            a {
+                padding: 1rem 1rem 1rem 1.75rem;
+            }
+
+            &-input {
+                display: none;
+                visibility: hidden;
+
+                &:checked {
+                    ~ .submenu {
+                        max-height: 1000px;
+                        @include transition(max-height 1s ease-in-out);
+                    }
+
+                    ~ .submenu-label .menu-chevron {
+                        @include transform(rotate(-90deg));
+                        @include transition(transform .3s ease-in-out);
+                    }
+                }
+
+                &:not(:checked) {
+                    ~ .submenu-label .menu-chevron {
+                        @include transform(rotate(0deg));
+                        @include transition(transform .3s ease-in-out);
+                    }
+                }
+            }
+
+            &-label {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@include breakpoint(desktop-down) {
+    header {
+        .sidebar {
+            min-width: $sidebar-mini-width;
+            width: $sidebar-mini-width;
+
+            &.is-mini {
+                min-width: $sidebar-mini-width;
+                width: $sidebar-mini-width;
+            }
+        }
+    }
+
+    .container {
+        position: relative;
+
+        .sidebar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            @include transform(translate(-$sidebar-width, 0));
+            @include transition(transform .2s ease-in-out);
+
+            &.is-mini {
+                min-width: $sidebar-width;
+                @include transform(translate(0, 0));
+                @include transition(all .2s ease-in-out);
+            }
+        }
+    }
+}
