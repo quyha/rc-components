@@ -79,6 +79,7 @@ interface Table {
      * Default selected keys
      */
     initialSelectedKeys?: StateSelectedKeys;
+    className?: string;
 }
 
 export interface PropsTableHead extends Columns, Selectable {

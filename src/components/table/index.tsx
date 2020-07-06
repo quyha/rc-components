@@ -14,6 +14,7 @@ const Table: React.FC<PropsTable> = (props) => {
         labelEmptyData,
         rowSelection = {},
         initialSelectedKeys = [],
+        className,
     } = props;
 
     const {
@@ -102,7 +103,7 @@ const Table: React.FC<PropsTable> = (props) => {
     }, [ initialSelectedKeys ]);
     
     return (
-        <div className="table-wrap">
+        <div className={ `table-wrap${ className ? ` ${ className }` : '' }` }>
             <table className={ `table${ loading ? ' is-loading' : '' }` } ref={ tableRef }>
                 <TableHead
                     columns={ columns }

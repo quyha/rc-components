@@ -1,13 +1,14 @@
 import React, { useState, useEffect, ReactNode } from 'react';
+import { Description } from '@storybook/addon-docs/blocks';
 import Table from '../components/table';
 import { Record } from '../components/table/type';
 import data from './data-table';
 import Pagination from '../components/pagination';
 import Tag from '../components/tags';
+import tableMd from '../markdown/table.md';
 
 export default {
     title: 'Table',
-    component: Table,
 };
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -17,6 +18,12 @@ function getData(page: number, pageSize: number) {
     return data.filter((_, i) => (i >= startIndex && i < endIndex))
         .map((d, i) => ({ ...{ no: startIndex + i + 1 }, ...d }));
 }
+
+export const README: React.FC<{}> = () => (
+    <div style={ { height: 2000 } }>
+        <Description markdown={ tableMd } />
+    </div>
+);
 
 export const Basic: React.FC<{}> = () => {
     const columns = [
