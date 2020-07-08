@@ -63,7 +63,7 @@ export const iconList: string[] = [
 
 const icons: { [key: string]: React.FC<SvgProps> } = iconList.reduce((acc, icon) => {
     try {
-        // eslint-disable-next-line global-require, import/no-dynamic-require
+        // eslint-disable-next-line global-require, import/no-dynamic-require, @typescript-eslint/no-var-requires
         const tmp = require(`./${ icon }`).default;
         return { ...acc, ...{ [icon]: tmp } };
     } catch (e) {
