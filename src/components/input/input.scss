@@ -41,6 +41,18 @@ $appearances: (
 );
 
 .field {
+    &.is-small {
+        font-size: $input-size-small;
+    }
+
+    &.is-medium {
+        font-size: $input-size-medium;
+    }
+
+    &.is-large {
+        font-size: $input-size-large;
+    }
+    
     &:not(:last-child) {
         margin-bottom: 1.2rem;
     }
@@ -89,18 +101,6 @@ $appearances: (
 
     .control {
         position: relative;
-
-        &.is-small {
-            font-size: $input-size-small;
-        }
-
-        &.is-medium {
-            font-size: $input-size-medium;
-        }
-
-        &.is-large {
-            font-size: $input-size-large;
-        }
 
         &.is-loading {
             &::after {

@@ -49,11 +49,10 @@ export const FieldWrap: React.FC<Partial<InputProps>> = (props) => {
         loading && 'is-loading',
         iconLeft && 'has-icon-left',
         iconRight && 'has-icon-right',
-        size && `is-${ size }`,
     ].filter(Boolean).join(' ');
 
     const render = useMemo(() => (
-        <div className="field">
+        <div className={ `field${ size ? ` is-${ size }` : '' }` }>
             { label && <label className="label">{ label }</label> }
             <div className={ cnControl }>
                 { children }
