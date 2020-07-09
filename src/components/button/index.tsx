@@ -1,5 +1,5 @@
+/* eslint-disable react/button-has-type */
 import React, { ReactNode } from 'react';
-import '../../styles/main.scss';
 
 interface Props {
     children: ReactNode;
@@ -32,6 +32,7 @@ interface Props {
     loading?: boolean;
     disabled?: boolean;
     selected?: boolean;
+    fullWidth?: boolean;
     /**
      * Click handler (event) => void
      */
@@ -41,7 +42,7 @@ interface Props {
 const Button: React.FC<Props> = (props: Props) => {
     const {
         children,
-        type,
+        type = 'button',
         isAnchor,
         href,
         titleAnchor,
@@ -54,6 +55,7 @@ const Button: React.FC<Props> = (props: Props) => {
         loading,
         disabled,
         selected,
+        fullWidth,
         className,
     } = props;
 
@@ -67,6 +69,7 @@ const Button: React.FC<Props> = (props: Props) => {
         loading && 'is-loading',
         disabled && 'is-disabled',
         selected && 'is-selected',
+        fullWidth && 'is-fullwidth',
         className && className,
     ].filter(Boolean).join(' ');
 
@@ -85,7 +88,6 @@ const Button: React.FC<Props> = (props: Props) => {
             { children }
         </a>
     ) : (
-        // eslint-disable-next-line react/button-has-type
         <button
             type={ type }
             className={ cn }

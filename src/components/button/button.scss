@@ -78,268 +78,272 @@ $button-disabled-opacity: 0.5 !default;
 //$button-static-border-color: $grey-lighter !default;
 
 $colors: mergeColorMaps((
-        "white": ($white, $black),
-        "black": ($black, $white),
-        "light": ($light, $light-invert),
-        "dark": ($dark, $dark-invert),
-        "primary": ($primary, $primary-invert, $primary-light, $primary-dark),
-        "info": ($info, $info-invert, $info-light, $info-dark),
-        "success": ($success, $success-invert, $success-light, $success-dark),
-        "warning": ($warning, $warning-invert, $warning-light, $warning-dark),
-        "danger": ($danger, $danger-invert, $danger-light, $danger-dark)), null) !default;
+    "white": ($white, $black),
+    "black": ($black, $white),
+    "light": ($light, $light-invert),
+    "dark": ($dark, $dark-invert),
+    "primary": ($primary, $primary-invert, $primary-light, $primary-dark),
+    "info": ($info, $info-invert, $info-light, $info-dark),
+    "success": ($success, $success-invert, $success-light, $success-dark),
+    "warning": ($warning, $warning-invert, $warning-light, $warning-dark),
+    "danger": ($danger, $danger-invert, $danger-light, $danger-dark)), null) !default;
 
 .button {
-  background-color: $button-background-color;
-  color: $button-color;
-  cursor: pointer;
-  @include justify-content(center);
-  padding: $button-padding-vertical $button-padding-horizontal;
-  text-align: center;
-  white-space: nowrap;
-  -webkit-appearance: none;
-  align-items: center;
-  border: $button-border-width solid $button-border-color;
-  border-radius: 4px;
-  box-shadow: none;
-  display: inline-flex;
-  font-size: 1rem;
-  line-height: 1.5;
-  height: 2.5em;
-  @include box-sizing(border-box);
+    background-color: $button-background-color;
+    color: $button-color;
+    cursor: pointer;
+    @include justify-content(center);
+    padding: $button-padding-vertical $button-padding-horizontal;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-appearance: none;
+    align-items: center;
+    border: $button-border-width solid $button-border-color;
+    border-radius: 4px;
+    box-shadow: none;
+    display: inline-flex;
+    font-size: 1rem;
+    line-height: 1.5;
+    height: 2.5em;
+    @include box-sizing(border-box);
 
-  &:hover {
-    border-color: $button-hover-border-color;
-    color: $button-hover-color;
-  }
-
-  &:focus {
-    border-color: $button-focus-border-color;
-    color: $button-hover-color;
-
-    &:not(:active) {
-      @include box-shadow($button-focus-box-shadow-size $button-focus-box-shadow-color);
+    &:hover {
+        border-color: $button-hover-border-color;
+        color: $button-hover-color;
     }
-  }
 
-  &:active {
-    border-color: $button-active-border-color;
-    color: $button-active-color;
-  }
-
-  &.is-small {
-    border-radius: $border-radius-small;
-    font-size: $font-size-small;
-  }
-
-  &.is-medium {
-    font-size: $font-size-medium;
-  }
-
-  &.is-large {
-    font-size: $font-size-large;
-  }
-
-  @each $name, $pair in $colors {
-    $color: nth($pair, 1);
-    $color-invert: nth($pair, 2);
-
-    &.is-#{$name} {
-      background-color: $color;
-      border-color: transparent;
-      color: $color-invert;
-
-      &:hover {
-        background-color: darken($color, 3%);
-        border-color: transparent;
-        color: $color-invert;
-      }
-
-      &:focus {
-        border-color: transparent;
-        color: $color-invert;
+    &:focus {
+        border-color: $button-focus-border-color;
+        color: $button-hover-color;
 
         &:not(:active) {
-          @include box-shadow($button-focus-box-shadow-size rgba($color, 0.25));
+            @include box-shadow($button-focus-box-shadow-size $button-focus-box-shadow-color);
         }
-      }
+    }
 
-      &:active {
-        background-color: darken($color, 5%);
-        border-color: transparent;
-        color: $color-invert;
-      }
+    &:active {
+        border-color: $button-active-border-color;
+        color: $button-active-color;
+    }
 
-      &:disabled, &.is-disabled {
-        background-color: $color;
-        border-color: transparent;
-        box-shadow: none;
-      }
+    &.is-small {
+        border-radius: $border-radius-small;
+        font-size: $font-size-small;
+    }
 
-      &.is-inverter {
-        background-color: $color-invert;
-        color: $color;
+    &.is-medium {
+        font-size: $font-size-medium;
+    }
 
-        &:hover {
-          background-color: darken($color-invert, 5%);
-        }
+    &.is-large {
+        font-size: $font-size-large;
+    }
 
-        &:disabled, &.is-disabled {
-          background-color: $color-invert;
-          border-color: transparent;
-          box-shadow: none;
-          color: $color;
-        }
-      }
+    @each $name, $pair in $colors {
+        $color: nth($pair, 1);
+        $color-invert: nth($pair, 2);
 
-      &.is-loading {
-        &::after {
-          border-color: transparent transparent $color-invert $color-invert !important;
-        }
-      }
+        &.is-#{$name} {
+            background-color: $color;
+            border-color: transparent;
+            color: $color-invert;
 
-      &.is-outlined {
-        background-color: transparent;
-        border-color: $color;
-        color: $color;
-
-        &:hover, &:focus {
-          background-color: $color;
-          border-color: $color;
-          color: $color-invert;
-        }
-
-        &.is-loading {
-          &::after {
-            border-color: transparent transparent $color $color !important;
-          }
-
-          &:hover, &:focus {
-            &::after {
-              border-color: transparent transparent $color-invert $color-invert !important;
+            &:hover {
+                background-color: darken($color, 3%);
+                border-color: transparent;
+                color: $color-invert;
             }
-          }
+
+            &:focus {
+                border-color: transparent;
+                color: $color-invert;
+
+                &:not(:active) {
+                    @include box-shadow($button-focus-box-shadow-size rgba($color, 0.25));
+                }
+            }
+
+            &:active {
+                background-color: darken($color, 5%);
+                border-color: transparent;
+                color: $color-invert;
+            }
+
+            &:disabled, &.is-disabled {
+                background-color: $color;
+                border-color: transparent;
+                box-shadow: none;
+            }
+
+            &.is-inverter {
+                background-color: $color-invert;
+                color: $color;
+
+                &:hover {
+                    background-color: darken($color-invert, 5%);
+                }
+
+                &:disabled, &.is-disabled {
+                    background-color: $color-invert;
+                    border-color: transparent;
+                    box-shadow: none;
+                    color: $color;
+                }
+            }
+
+            &.is-loading {
+                &::after {
+                    border-color: transparent transparent $color-invert $color-invert !important;
+                }
+            }
+
+            &.is-outlined {
+                background-color: transparent;
+                border-color: $color;
+                color: $color;
+
+                &:hover, &:focus {
+                background-color: $color;
+                border-color: $color;
+                color: $color-invert;
+                }
+
+                &.is-loading {
+                    &::after {
+                        border-color: transparent transparent $color $color !important;
+                    }
+
+                    &:hover, &:focus {
+                        &::after {
+                        border-color: transparent transparent $color-invert $color-invert !important;
+                        }
+                    }
+                }
+
+                &:disabled, &.is-disabled {
+                    background-color: transparent;
+                    border-color: $color;
+                    box-shadow: none;
+                    color: $color;
+                }
+            }
+        }
+    }
+
+    &:disabled, &.is-disabled {
+        background-color: $button-disabled-background-color;
+        border-color: $button-disabled-border-color;
+        box-shadow: $button-disabled-shadow;
+        opacity: $button-disabled-opacity;
+        cursor: not-allowed;
+    }
+
+    &.is-loading {
+        color: transparent !important;
+        pointer-events: none;
+        position: relative;
+        opacity: .5;
+
+        &::after {
+            @extend %loading;
+        }
+    }
+
+    &.is-rounded {
+        border-radius: $border-radius-rounded;
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+
+    &.is-fullwidth {
+        width: 100%;
+    }
+
+    .icon {
+        &, &.is-small, &.is-medium, &.is-large {
+            height: 1.5em;
+            width: 1.5em;
+            @include flexbox();
+            @include align-items(center);
+            @include justify-content(center);
         }
 
-        &:disabled, &.is-disabled {
-          background-color: transparent;
-          border-color: $color;
-          box-shadow: none;
-          color: $color;
+        &:first-child:not(:last-child) {
+            margin-left: calc(-0.5em - #{$button-border-width});
+            margin-right: .25em;
         }
-      }
+
+        &:last-child:not(:first-child) {
+            margin-left: .25em;
+            margin-right: calc(-0.5em - #{$button-border-width});
+        }
+
+        &:first-child:last-child {
+            margin-left: calc(-0.5em - #{$button-border-width});
+            margin-right: calc(-0.5em - #{$button-border-width});
+        }
     }
-  }
-
-  &:disabled, &.is-disabled {
-    background-color: $button-disabled-background-color;
-    border-color: $button-disabled-border-color;
-    box-shadow: $button-disabled-shadow;
-    opacity: $button-disabled-opacity;
-    cursor: not-allowed;
-  }
-
-  &.is-loading {
-    color: transparent !important;
-    pointer-events: none;
-    position: relative;
-    opacity: .5;
-
-    &::after {
-      @extend %loading;
-    }
-  }
-
-  &.is-rounded {
-    border-radius: $border-radius-rounded;
-    padding-left: 1em;
-    padding-right: 1em;
-  }
-
-  .icon {
-    &, &.is-small, &.is-medium, &.is-large {
-      height: 1.5em;
-      width: 1.5em;
-      @include flexbox();
-      @include align-items(center);
-      @include justify-content(center);
-    }
-
-    &:first-child:not(:last-child) {
-      margin-left: calc(-0.5em - #{$button-border-width});
-      margin-right: .25em;
-    }
-
-    &:last-child:not(:first-child) {
-      margin-left: .25em;
-      margin-right: calc(-0.5em - #{$button-border-width});
-    }
-
-    &:first-child:last-child {
-      margin-left: calc(-0.5em - #{$button-border-width});
-      margin-right: calc(-0.5em - #{$button-border-width});
-    }
-  }
 }
 
 .buttons {
-  @include flexbox();
-  @include align-items(center);
-  @include flex-wrap(wrap);
-  @include justify-content(flex-start);
+    @include flexbox();
+    @include align-items(center);
+    @include flex-wrap(wrap);
+    @include justify-content(flex-start);
 
-  .button {
-    margin-bottom: 0.5rem;
+    .button {
+        margin-bottom: 0.5rem;
+
+        &:not(:last-child) {
+            margin-right: 0.75rem;
+        }
+    }
+
+    &:last-child {
+        margin-bottom: -0.5rem;
+    }
 
     &:not(:last-child) {
-      margin-right: 0.75rem;
+        margin-bottom: 1rem;
     }
-  }
 
-  &:last-child {
-    margin-bottom: -0.5rem;
-  }
+    &.is-centered {
+        @include justify-content(center);
+    }
 
-  &:not(:last-child) {
-    margin-bottom: 1rem;
-  }
+    &.is-right {
+        @include justify-content(flex-end);
+    }
 
-  &.is-centered {
-    @include justify-content(center);
-  }
+    &.has-addons {
+        .button {
+            &:not(:last-child) {
+                border-bottom-right-radius: 0;
+                border-top-right-radius: 0;
+                margin-right: -1px;
+            }
 
-  &.is-right {
-    @include justify-content(flex-end);
-  }
+            &:not(:first-child) {
+                border-bottom-left-radius: 0;
+                border-top-left-radius: 0;
+            }
 
-  &.has-addons {
-      .button {
-          &:not(:last-child) {
-            border-bottom-right-radius: 0;
-            border-top-right-radius: 0;
-            margin-right: -1px;
-          }
+            &:last-child {
+                margin-right: 0;
+            }
 
-          &:not(:first-child) {
-            border-bottom-left-radius: 0;
-            border-top-left-radius: 0;
-          }
+            &:focus, &:active {
+                z-index: 3;
+            }
 
-          &:last-child {
-              margin-right: 0;
-          }
+            &:hover {
+                z-index: 2;
+            }
 
-          &:focus, &:active {
-              z-index: 3;
-          }
-
-          &:hover {
-              z-index: 2;
-          }
-
-          &.is-selected {
-              background-color: $color-primary;
-              color: $color-white;
-          }
-      }
-  }
+            &.is-selected {
+                background-color: $color-primary;
+                color: $color-white;
+            }
+        }
+    }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import Button, { ButtonGroup } from '../components/button';
 import Icon from '../components/icon';
+import '../styles/main.scss';
 
 export default {
     title: 'Button',
