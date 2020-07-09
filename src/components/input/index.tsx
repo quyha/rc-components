@@ -25,6 +25,10 @@ export interface InputProps {
      * If you want a horizontal form control
      */
     horizontal?: boolean;
+    /**
+     * One of small | medium | large
+     */
+    size?: string;
 }
 
 export const FieldWrap: React.FC<Partial<InputProps>> = (props) => {
@@ -37,6 +41,7 @@ export const FieldWrap: React.FC<Partial<InputProps>> = (props) => {
         children,
         horizontal,
         value = '',
+        size,
     } = props;
 
     const cnControl = [
@@ -44,6 +49,7 @@ export const FieldWrap: React.FC<Partial<InputProps>> = (props) => {
         loading && 'is-loading',
         iconLeft && 'has-icon-left',
         iconRight && 'has-icon-right',
+        size && `is-${ size }`,
     ].filter(Boolean).join(' ');
 
     const render = useMemo(() => (

@@ -25,6 +25,10 @@ $input-icon-active-color: hsl(0, 0%, 48%) !default;
 
 $input-radius: 4px !default;
 
+$input-size-small: .75rem !default;
+$input-size-medium: 1.25rem !default;
+$input-size-large: 1.5rem !default;
+
 $label-color: hsl(0, 0%, 21%) !default;
 $label-weight: 700 !default;
 
@@ -85,6 +89,18 @@ $appearances: (
 
     .control {
         position: relative;
+
+        &.is-small {
+            font-size: $input-size-small;
+        }
+
+        &.is-medium {
+            font-size: $input-size-medium;
+        }
+
+        &.is-large {
+            font-size: $input-size-large;
+        }
 
         &.is-loading {
             &::after {

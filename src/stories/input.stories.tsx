@@ -146,3 +146,39 @@ export const Textarea: React.FC<{}> = () => (
         />
     </div>
 );
+
+export const Size: React.FC<{}> = () => (
+    <div style={ styleWrapper }>
+        <Input
+            type="text"
+            placeholder="Small"
+            size="small"
+            label="Username"
+            error="Username is invalid"
+            iconRight={ <Icon name="search" /> }
+        />
+        <Input
+            type="text"
+            placeholder="Normal"
+            label="Username"
+            error="Username is invalid"
+            iconRight={ <Icon name="search" /> }
+        />
+        <Input
+            type="text"
+            placeholder="Medium"
+            size="medium"
+            label="Username"
+            error="Username is invalid"
+            iconRight={ <Icon name="search" /> }
+        />
+        <Input
+            type="text"
+            placeholder="Large"
+            size="large"
+            label="Username"
+            error="Username is invalid"
+            iconRight={ <Icon name="search" /> }
+        />
+    </div>
+);
