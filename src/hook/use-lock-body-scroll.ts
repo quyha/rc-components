@@ -1,7 +1,6 @@
 import { useLayoutEffect } from 'react';
 
 function useLockBodyScroll(): void {
-    // eslint-disable-next-line consistent-return
     useLayoutEffect(() => {
         const { body } = document;
 
@@ -12,6 +11,7 @@ function useLockBodyScroll(): void {
                 body.style.overflow = 'visible';
             }
         }
+        return (): void => {};
     }, []);
 }
 

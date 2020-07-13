@@ -6,7 +6,11 @@ interface PropsDropdown {
     /**
      * Label of button
      */
-    label: string;
+    label?: string;
+    /**
+     * Custom dropdown trigger
+     */
+    dropdownTrigger?: ReactNode;
     className?: string;
     /**
      * Show icon arrow down
@@ -55,7 +59,8 @@ const DropdownItem: React.FC<PropsDropdownItem> = (props) => {
 const Dropdown: React.FC<PropsDropdown> = (props: PropsDropdown) => {
     const {
         children,
-        label,
+        label = '',
+        dropdownTrigger,
         className,
         hasArrowDown,
         active,
@@ -98,22 +103,25 @@ const Dropdown: React.FC<PropsDropdown> = (props: PropsDropdown) => {
     return (
         <div className={ cnDropdown } ref={ refDropdown }>
             <div className="dropdown-trigger">
-                <button
-                    type="button"
-                    className="button"
-                    aria-haspopup="true"
-                    aria-controls="dropdown-menu"
-                    onClick={ toggleOpen }
-                >
-                    <span>{ label }</span>
-                    {
-                        hasArrowDown && (
-                            <svg className="icon dropdown-arrow" viewBox="0 0 24 24">
-                                <path d="M12 14.071L8.179 10.25a1.061 1.061 0 00-1.5 1.5l4.614 4.614a.999.999 0 001.414 0l4.614-4.614a1.061 1.061 0 00-1.5-1.5L12 14.071z" />
-                            </svg>
-                        )
-                    }
-                </button>
+                {
+                    dropdownTrigger ?? (
+                        <button
+                            type="button"
+                            className="button"
+                            aria-haspopup="true"
+                            aria-controls="dropdown-menu"
+                            onClick={ toggleOpen }
+                        >
+                            <span>{ label }</span>                            {
+                                hasArrowDown && (
+                                    <svg className="icon dropdown-arrow" viewBox="0 0 24 24">
+                                        <path d="M12 14.071L8.179 10.25a1.061 1.061 0 00-1.5 1.5l4.614 4.614a.999.999 0 001.414 0l4.614-4.614a1.061 1.061 0 00-1.5-1.5L12 14.071z" />
+                                    </svg>
+                                )
+                            }
+                        </button>
+                    )
+                }
             </div>
             <div className="dropdown-menu" role="menu">
                 <div className="dropdown-content">

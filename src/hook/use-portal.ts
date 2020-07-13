@@ -20,7 +20,6 @@ function addRootElement(rootElem: Element): void {
 function usePortal(id: string): HTMLElement | null {
     const rootElemRef = useRef<HTMLElement | null>(null);
 
-    // eslint-disable-next-line consistent-return
     useEffect(() => {
         const existingParent = document.querySelector(`#${ id }`);
         const parentElem = existingParent || createRootElement(id);
@@ -43,6 +42,7 @@ function usePortal(id: string): HTMLElement | null {
                 }
             };
         }
+        return (): void => {};
     }, [ id ]);
 
     function getRootElem(): HTMLElement {
