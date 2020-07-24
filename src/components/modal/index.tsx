@@ -17,6 +17,10 @@ interface Props {
      * Expand width content modal
      */
     large?: boolean;
+    /**
+     * Class modal
+     */
+    className?: string;
 }
 
 interface Card {
@@ -33,6 +37,7 @@ const Modal: React.FC<Props & Card> = (props: Props & Card) => {
         hasClickOutside,
         large,
         hasCard,
+        className,
     } = props;
 
     const cnBackground = [
@@ -43,6 +48,7 @@ const Modal: React.FC<Props & Card> = (props: Props & Card) => {
     const cnContent = [
         hasCard ? 'modal-card' : 'modal-content',
         large && 'is-large',
+        className && className,
     ].filter(Boolean).join(' ');
 
     const doClickOutside: React.MouseEventHandler<HTMLDivElement> = () => {
