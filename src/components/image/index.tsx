@@ -8,7 +8,7 @@ interface Props {
     /**
      * One of 16 | 24 | 32 | 48 | 64 | 96 | 128
      */
-    size?: 16 | 24 | 32 | 48 | 64 | 96 | 128;
+    size?: 16 | 24 | 32 | 40 | 48 | 64 | 96 | 128;
     /**
      * One of 'cover' | 'contain' | 'fill' | 'none' | 'unset'
      */
