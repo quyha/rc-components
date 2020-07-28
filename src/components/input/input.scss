@@ -64,6 +64,8 @@ $appearances: (
     }
 
     &-label {
+        margin-bottom: .5rem;
+        
         @include breakpoint(desktop-up) {
             @include flex-basis(0);
             @include flex-grow(1);
