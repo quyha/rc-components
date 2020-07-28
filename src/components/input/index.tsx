@@ -64,7 +64,7 @@ export const FieldWrap: React.FC<Partial<InputProps>> = (props) => {
     ), [ value, error, cnControl, children ]);
 
     const renderHorizontal = useMemo(() => (
-        <div className="field is-horizontal">
+        <div className={ `field is-horizontal${ size ? ` is-${ size }` : '' }` }>
             <div className="field-label">
                 { label && <label className="label">{ label }</label> }
             </div>
