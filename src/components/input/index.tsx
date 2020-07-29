@@ -1,13 +1,8 @@
-import React, { ReactNode, useMemo } from 'react';
+import React, { ReactNode, useMemo, InputHTMLAttributes } from 'react';
 
-export interface InputProps {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
     type: string;
     className?: string;
-    value?: string;
-    /**
-     * Change event handler (value: string) => void
-     */
-    onChange?: (value: string) => void;
     placeholder?: string;
     /**
      * One of 'primary' | 'info' | 'success' | 'warning' | 'danger'
@@ -28,7 +23,7 @@ export interface InputProps {
     /**
      * One of small | medium | large
      */
-    size?: string;
+    sizes?: string | number;
 }
 
 export const FieldWrap: React.FC<Partial<InputProps>> = (props) => {
@@ -41,7 +36,7 @@ export const FieldWrap: React.FC<Partial<InputProps>> = (props) => {
         children,
         horizontal,
         value = '',
-        size,
+        sizes,
     } = props;
 
     const cnControl = [
@@ -52,7 +47,7 @@ export const FieldWrap: React.FC<Partial<InputProps>> = (props) => {
     ].filter(Boolean).join(' ');
 
     const render = useMemo(() => (
-        <div className={ `field${ size ? ` is-${ size }` : '' }` }>
+        <div className={ `field${ sizes ? ` is-${ sizes }` : '' }` }>
             { label && <label className="label">{ label }</label> }
             <div className={ cnControl }>
                 { children }
@@ -64,7 +59,7 @@ export const FieldWrap: React.FC<Partial<InputProps>> = (props) => {
     ), [ value, error, cnControl, children ]);
 
     const renderHorizontal = useMemo(() => (
-        <div className={ `field is-horizontal${ size ? ` is-${ size }` : '' }` }>
+        <div className={ `field is-horizontal${ sizes ? ` is-${ sizes }` : '' }` }>
             <div className="field-label">
                 { label && <label className="label">{ label }</label> }
             </div>
@@ -91,14 +86,18 @@ const Input: React.FC<InputProps> = (props: InputProps) => {
     const {
         type,
         className,
-        value = '',
-        onChange,
         placeholder = '',
         appearance,
         rounded,
         disabled = false,
         readonly = false,
         error,
+        iconLeft,
+        iconRight,
+        loading,
+        horizontal,
+        label,
+        ...restProps
     } = props;
 
     const cnInput = [
@@ -108,12 +107,6 @@ const Input: React.FC<InputProps> = (props: InputProps) => {
         rounded && 'is-rounded',
         error && 'is-danger',
     ].filter(Boolean).join(' ');
-
-    const changeValue: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> = ({ target }) => {
-        if (onChange) {
-            onChange(target.value);
-        }
-    }
     
     return (
         // eslint-disable-next-line react/jsx-props-no-spreading
@@ -123,20 +116,20 @@ const Input: React.FC<InputProps> = (props: InputProps) => {
                     <input
                         type={ type }
                         className={ cnInput }
-                        value={ value }
-                        onChange={ changeValue }
                         placeholder={ placeholder }
                         disabled={ disabled }
                         readOnly={ readonly }
+                        // eslint-disable-next-line react/jsx-props-no-spreading
+                        { ...restProps }
                     />
                 ) : (
                     <textarea
-                        value={ value }
                         className={ `${ className !== undefined ? className : '' }${ error ? ' is-danger' : '' }` }
-                        onChange={ changeValue }
                         placeholder={ placeholder }
                         disabled={ disabled }
                         readOnly={ readonly }
+                        // eslint-disable-next-line react/jsx-props-no-spreading
+                        { ...restProps }
                     />
                 )
             }
@@ -144,7 +137,4 @@ const Input: React.FC<InputProps> = (props: InputProps) => {
     )
 }
 
-// export default React.memo<Props>(Input, (prevProps, nextProps) => {
-//     return prevProps.value === nextProps.value
-// });
-export default Input;
+export default React.memo<InputProps>(Input, (prevProps, nextProps) => prevProps.value === nextProps.value);

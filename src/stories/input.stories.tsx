@@ -14,7 +14,7 @@ const styleWrapper: CSSProperties = {
 export const InputGeneral: React.FC<{}> = () => {
     const [ value, setValue ] = useState<string>('');
 
-    const changeInput: (v: string) => void = (v) => setValue(v);
+    const changeInput: React.ChangeEventHandler<HTMLInputElement> = (e): void => setValue(e.target.value);
     
     return (
         <div style={ styleWrapper }>
@@ -53,7 +53,7 @@ export const Disabled: React.FC<{}> = () => (
 
 export const Readonly: React.FC<{}> = () => (
     <div style={ styleWrapper }>
-        <Input type="text" readonly value="Readonly input" />
+        <Input type="text" readonly placeholder="Readonly input" />
     </div>
 );
 
@@ -120,13 +120,13 @@ export const Textarea: React.FC<{}> = () => (
         <Input
             type="textarea"
             placeholder="Textarea"
-            value="This is a textarea"
+            defaultValue="This is a textarea"
             label="Textarea"
         />
         <Input
             type="textarea"
             placeholder="Textarea"
-            value="This is a textarea"
+            defaultValue="This is a textarea"
             label="Textarea"
             error="Invalid textarea"
         />
@@ -139,7 +139,7 @@ export const Textarea: React.FC<{}> = () => (
         <Input
             type="textarea"
             placeholder="Textarea"
-            value="This is a textarea"
+            defaultValue="This is a textarea"
             label="Textarea"
             error="Invalid textarea"
             horizontal
@@ -152,7 +152,7 @@ export const Size: React.FC<{}> = () => (
         <Input
             type="text"
             placeholder="Small"
-            size="small"
+            sizes="small"
             label="Username"
             error="Username is invalid"
             iconRight={ <Icon name="search" /> }
@@ -167,7 +167,7 @@ export const Size: React.FC<{}> = () => (
         <Input
             type="text"
             placeholder="Medium"
-            size="medium"
+            sizes="medium"
             label="Username"
             error="Username is invalid"
             iconRight={ <Icon name="search" /> }
@@ -175,7 +175,7 @@ export const Size: React.FC<{}> = () => (
         <Input
             type="text"
             placeholder="Large"
-            size="large"
+            sizes="large"
             label="Username"
             error="Username is invalid"
             iconRight={ <Icon name="search" /> }
