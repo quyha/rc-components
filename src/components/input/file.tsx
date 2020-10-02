@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Icon from '../icon';
 import Image from '../image';
 
 interface Props {
@@ -36,6 +35,7 @@ interface Props {
      * Display message when file is invalid
      */
     error?: string;
+    hasPreview?: boolean;
 }
 
 const InputFile: React.FC<Props> = (props: Props) => {
@@ -49,6 +49,7 @@ const InputFile: React.FC<Props> = (props: Props) => {
         align,
         ctaFullWidth,
         error,
+        hasPreview = true,
     } = props;
 
     const [ preview, setPreview ] = useState<string>('');
@@ -92,7 +93,16 @@ const InputFile: React.FC<Props> = (props: Props) => {
                     />
                     <span className="file-cta">
                         <span className="file-icon">
-                            <Icon name="file-upload" />
+                            <svg
+                                width="1.5em"
+                                height="1.5em"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                fill="none"
+                            >
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M13.25 16h-2.5c-.689 0-1.25-.561-1.25-1.25V9H6.75a.75.75 0 01-.542-1.268l5.25-5.5a.774.774 0 011.085 0l5.25 5.5A.75.75 0 0117.25 9H14.5v5.75c0 .689-.561 1.25-1.25 1.25zm9 6H1.75C.785 22 0 21.215 0 20.25v-.5C0 18.785.785 18 1.75 18h20.5c.965 0 1.75.785 1.75 1.75v.5c0 .965-.785 1.75-1.75 1.75z" />
+                            </svg>
                         </span>
                         <span className="file-label">
                             { label }
@@ -103,7 +113,7 @@ const InputFile: React.FC<Props> = (props: Props) => {
             </div>
             { error && <p className="help is-danger">{ error }</p> }
             {
-                (!error && preview) && (
+                (!error && preview && hasPreview) && (
                     <Image
                         src={ preview }
                         size={ 128 }
