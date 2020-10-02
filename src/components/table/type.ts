@@ -4,6 +4,7 @@ type KeyType = string | number;
 
 export interface Record {
     key: KeyType;
+    // [key: string]: any;
 }
 
 interface Column {
