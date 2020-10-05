@@ -137,4 +137,7 @@ const Input: React.FC<InputProps> = (props: InputProps) => {
     )
 }
 
-export default React.memo<InputProps>(Input, (prevProps, nextProps) => prevProps.value === nextProps.value);
+export default React.memo<InputProps>(Input, (prevProps, nextProps) => (
+    prevProps.value === nextProps.value
+    && prevProps?.loading === nextProps?.loading
+));
