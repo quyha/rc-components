@@ -113,7 +113,7 @@ const Table: React.FC<PropsTable> = (props) => {
                 />
                 <tbody>
                     {
-                        data.length > 0 ? data.map((dt) => (
+                        data.length > 0 && data.map((dt) => (
                             <TableRow
                                 key={ dt.key }
                                 columnKeys={ columnKeys }
@@ -124,8 +124,9 @@ const Table: React.FC<PropsTable> = (props) => {
                                 checkboxProps={ getCheckboxProps && getCheckboxProps(dt) }
                                 columnRenderer={ columnRenderer }
                             />
-                        )) : emptyData
+                        ))
                     }
+                    { data.length === 0 && !loading && emptyData }
                 </tbody>
             </table>
             {

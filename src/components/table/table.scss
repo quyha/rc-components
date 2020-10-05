@@ -5,6 +5,7 @@ $table-thead-background-color: #F7FAFC !default;
 $table-thead-border-color: #F7FAFC !default;
 $table-td-border-color: #F7FAFC !default;
 $table-empty-color: #A3ACB8 !default;
+$table-min-height: 300px !default;
 
 $table-row-hover-background-color: #FAFAFA !default;
 $table-row-selected-background-color: #F7FAFC !default;
@@ -13,6 +14,7 @@ $table-cell-padding: 1em 1.25em !default;
 
 .table-wrap {
     position: relative;
+    min-height: $table-min-height;
 }
 
 .table {
