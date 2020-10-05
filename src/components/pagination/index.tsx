@@ -22,7 +22,14 @@ interface Props {
      * Alignment pagination. One of 'left' | 'center' | 'right'
      */
     align?: 'left' | 'center' | 'right';
+    /**
+     * Disable when loading = true
+     */
     loading?: boolean;
+    /**
+     * Class name pagination
+     */
+    className?: string;
 }
 
 interface Pager {
@@ -85,6 +92,7 @@ const Pagination: React.FC<Props> = (props: Props) => {
         onChange,
         align,
         loading,
+        className,
     } = props;
 
     const [ pager, setPager ] = useState<Pager>();
@@ -116,6 +124,7 @@ const Pagination: React.FC<Props> = (props: Props) => {
         'pagination',
         align && `is-${ align }`,
         loading && 'is-loading',
+        className && className,
     ].filter(Boolean).join(' ');
 
     useEffect(() => {
