@@ -4,6 +4,14 @@ $box-radius: $border-radius-huge !default;
 $box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1) !default;
 $box-padding: 1.25rem !default;
 
+$spacing-spaceamounts: (0, 5, 6, 10, 15, 16, 20, 25, 30, 32, 35, 40, 45, 50, 64, 75, 100);
+$spacing-sides: (
+    "top": t,
+    "bottom": b,
+    "left": l,
+    "right": r,
+);
+
 .box {
     background-color: $box-background-color;
     border-radius: $box-radius;
@@ -11,4 +19,23 @@ $box-padding: 1.25rem !default;
     color: $box-color;
     display: block;
     padding: $box-padding;
+}
+
+@each $space in $spacing-spaceamounts {
+    @each $side, $side-name in $spacing-sides {
+        $spacing: $space/16;
+        
+        .m#{$side-name}#{$space} {
+            margin-#{$side}: #{$spacing}rem !important;
+        }
+
+        .p#{$side-name}#{$space} {
+            padding-#{$side}: #{$spacing}rem !important;
+        }
+    }
+}
+
+.group-row {
+    @include flexbox();
+    @include align-items(center);
 }
