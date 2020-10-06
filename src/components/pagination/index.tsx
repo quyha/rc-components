@@ -104,7 +104,7 @@ const Pagination: React.FC<Props> = (props: Props) => {
 
         const newPager = getPager(total, page, pageSize);
 
-        if (page <= total && page >= 1) {
+        if (page >= 1) {
             setPager(newPager); // update state
         }
     }
