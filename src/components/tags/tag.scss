@@ -5,7 +5,7 @@ $tag-size-small: .75em !default;
 $tag-size-medium: 1.25em !default;
 $tag-size-large: 1.5em !default;
 
-.tag:not(body) {
+.r-tag:not(body) {
     display: inline-flex;
     font-size: 1rem;
     color: $tag-color;
@@ -60,12 +60,12 @@ $tag-size-large: 1.5em !default;
     }
 }
 
-.tags {
+.r-tags {
     @include flexbox();
     @include align-items(center);
     @include flex-wrap(wrap);
 
-    .tag {
+    .r-tag {
         margin-bottom: .5rem;
 
         &:not(:last-child) {

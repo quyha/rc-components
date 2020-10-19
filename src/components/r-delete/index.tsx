@@ -9,7 +9,7 @@ interface Props {
     size?: 'small' | 'medium' | 'large';
 }
 
-const Delete: React.FC<Props> = (props: Props) => {
+const RDelete: React.FC<Props> = (props: Props) => {
     const { onClick, title, size } = props;
     
     const cn = [
@@ -28,8 +28,8 @@ const Delete: React.FC<Props> = (props: Props) => {
     )
 };
 
-Delete.defaultProps = {
+RDelete.defaultProps = {
     title: 'Delete',
 };
 
-export default Delete;
+export default RDelete;

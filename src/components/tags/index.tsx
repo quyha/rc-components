@@ -1,5 +1,5 @@
 import React, { ReactNode, MouseEvent } from 'react';
-import Delete from '../delete';
+import RDelete from '../r-delete';
 
 interface Props {
     children: ReactNode;
@@ -38,7 +38,7 @@ const Tag: React.FC<Props> = (props: Props) => {
     } = props;
 
     const cn = [
-        'tag',
+        'r-tag',
         appearance && `is-${ appearance }`,
         size && `is-${ size }`,
         light && 'is-light',
@@ -60,13 +60,13 @@ const Tag: React.FC<Props> = (props: Props) => {
     return (
         <span className={ cn } onClick={ doClick }>
             { children }
-            { deleteable && <Delete size="small" onClick={ doDelete } /> }
+            { deleteable && <RDelete size="small" onClick={ doDelete } /> }
         </span>
     )
 };
 
 export const TagGroup: React.FC<{}> = ({ children }) => (
-    <div className="tags">
+    <div className="r-tags">
         { children }
     </div>
 );

@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import Delete from '../delete';
+import RDelete from '../r-delete';
 
 interface Props {
     children: ReactNode;
@@ -34,7 +34,7 @@ const Notification: React.FC<Props> = (props: Props) => {
 
     return (
         <div className={ cn }>
-            <Delete onClick={ doClose } />
+            <RDelete onClick={ doClose } />
             { children }
         </div>
     )

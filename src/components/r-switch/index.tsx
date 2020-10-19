@@ -17,7 +17,7 @@ interface Props extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLInputEl
     sizes?: 'small' | 'large';
 }
 
-const Switch: React.FC<Props> = (props: Props) => {
+const RSwitch: React.FC<Props> = (props: Props) => {
     const {
         id,
         className,
@@ -48,4 +48,4 @@ const Switch: React.FC<Props> = (props: Props) => {
     )
 };
 
-export default Switch;
+export default RSwitch;

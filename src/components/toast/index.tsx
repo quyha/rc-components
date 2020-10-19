@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
-import Delete from '../delete';
+import RDelete from '../r-delete';
 
 interface ContentProps {
     content: ReactNode;
@@ -37,7 +37,7 @@ const Message: React.FC<MessageProps> = ({ content, closeable, onClose }) => {
     return (
         <div className="toast-content">
             { content }
-            { closeable && <Delete onClick={ close } size="small" /> }
+            { closeable && <RDelete onClick={ close } size="small" /> }
         </div>
     );
 }
