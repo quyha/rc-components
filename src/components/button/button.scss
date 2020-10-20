@@ -44,6 +44,7 @@ $danger-dark     : findDarkColor($danger) !default;
 $light-invert    : findColorInvert($light) !default;
 $dark-invert     : findColorInvert($dark) !default;
 
+$button-height: 2.875rem !default;
 $button-color: $color-text-primary !default;
 $button-background-color: $color-white !default;
 
@@ -104,7 +105,7 @@ $colors: mergeColorMaps((
     display: inline-flex;
     font-size: 1rem;
     line-height: 1.5;
-    height: 2.5em;
+    height: $button-height;
     @include box-sizing(border-box);
 
     &:hover {
@@ -269,13 +270,13 @@ $colors: mergeColorMaps((
         }
 
         &:first-child:not(:last-child) {
-            margin-left: calc(-0.5em - #{$button-border-width});
-            margin-right: .25em;
+            // margin-left: calc(-0.5em - #{$button-border-width});
+            margin-right: .5em;
         }
 
         &:last-child:not(:first-child) {
-            margin-left: .25em;
-            margin-right: calc(-0.5em - #{$button-border-width});
+            margin-left: .5em;
+            // margin-right: calc(-0.5em - #{$button-border-width});
         }
 
         &:first-child:last-child {
