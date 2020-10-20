@@ -44,7 +44,7 @@ $danger-dark     : findDarkColor($danger) !default;
 $light-invert    : findColorInvert($light) !default;
 $dark-invert     : findColorInvert($dark) !default;
 
-$button-height: 2.875rem !default;
+$button-height: 2.875em !default;
 $button-color: $color-text-primary !default;
 $button-background-color: $color-white !default;
 
